@@ -25,3 +25,15 @@ export const crearColores = async (req, res) => {
         });
     }
 };
+
+export const borrarColor = async (req, res) => {
+    try {
+        const { id } = req.params;
+        await Producto.findByIdAndDelete(id);
+        res.status(200).json({ mensaje: "color eliminiado" });
+    } catch (error) {
+        res.status(404).json({
+            mensaje: "error al borrar producto no se encontro en db",
+        });
+    }
+};
